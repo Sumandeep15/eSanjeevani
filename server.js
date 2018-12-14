@@ -97,6 +97,7 @@ app.use(function(error, req, res, next) {
     //     to: 'summi15@gmail.com',
     //     subject: 'Error',
     //     text: "error"
+
     // };
     // mailerClass.sendMail(mailOptions);
     res.send({ status: false, success: false, message: error.message });
