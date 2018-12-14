@@ -13,7 +13,7 @@ var mailerClass = require('./classes/mailerClass');
 const csrfMiddleware = csurf({
     cookie: true
 });
-
+    
 var config = require('./config'); // get our config file
 var port = process.env.PORT || 8080; // used to create, sign, and verify tokens
 mongoose.connect(config.database); // connect to database
