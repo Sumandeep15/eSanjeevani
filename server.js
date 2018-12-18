@@ -122,9 +122,20 @@ app.use(function(error, req, res, next) {
 // =================================================================
 // start the server ================================================
 // =================================================================
+<<<<<<< HEAD
 console.log("Environment : " + app.get('env'));
 if (app.get('env') == 'production') {
     app.listen(port, "10.228.1.42");
 } else {
     app.listen(8080, "localhost");
 }
+=======
+
+app.listen(port, "10.228.12.138");
+
+
+
+
+//OKay
+
+>>>>>>> eaa3feaa5e2489744ffee6329ce3072e74d9fb37
