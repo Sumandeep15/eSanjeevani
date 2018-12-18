@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-var salt = bcrypt.genSaltSync(saltRounds);
+var salt = bcrypt.genSaltSync(null);
+var sha512 = require('sha512');
 
 function errorMessage(error) {
     if (error.name === 'MongoError' && error.code === 11000) {
@@ -26,6 +27,9 @@ function convertHash(plaintext) {
     return bcrypt.hashSync(plaintext, salt);
 }
 
+function SHAEncryption(text) {
+    return sha512(text);
+}
 var encrypt = function(text) {
     var cipher = crypto.createCipher('AES-256-CBC', passPhrase);
     var crypted = cipher.update(text, 'utf8', 'hex');
@@ -55,5 +59,5 @@ module.exports = {
     convertHash: convertHash,
     encrypt: encrypt,
     decrypt: decrypt,
-
+    SHAEncryption: SHAEncryption
 };

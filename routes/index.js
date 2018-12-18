@@ -17,7 +17,7 @@ router.post('/adminauthentication', auth.login);
 /*
  * Admin SignUp
  */
-router.get('/adminSignup', auth.signup);
+router.get('/createlogin', auth.createlogin);
 /*
  * Get Admin Profile
  */

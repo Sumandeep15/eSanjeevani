@@ -7,16 +7,16 @@ var extend = require('mongoose-validator').extend
 var validationclass = require('../../classes/validationClass');
 
 
-var stateMasterSchema = new Schema({
+var memberTypeSchema = new Schema({
     name: {
         type: String,
         reuired: [true, "State Name is required."]
     },
     code: {
-        type: String,
-
+        type: Number,
+        unique: true
     }
 }, { emitIndexErrors: true });
 
-var StateMaster = db.model('StateMaster', stateMasterSchema, 'StateMaster');
-module.exports = StateMaster;
+var MemberType = db.model('MemberType', memberTypeSchema, 'MemberType');
+module.exports = MemberType;

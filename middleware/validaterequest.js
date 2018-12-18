@@ -1,6 +1,6 @@
 var jwt = require('jsonwebtoken');
 var validateUser = require('../routes/auth').validateUser;
-
+var messageclass = require('../classes/messageClass');
 module.exports = function(req, res, next) {
 
     // check header or url parameters or post parameters for token
@@ -10,7 +10,7 @@ module.exports = function(req, res, next) {
     if (token) {
 
         // verifies secret and checks exp
-        jwt.verify(token, require('../config/secret')(), function(err, decoded) {
+        jwt.verify(messageclass.decrypt(token), require('../config/secret')(), function(err, decoded) {
 
             if (err) {
                 return res.json({ success: false, message: 'Failed to authenticate token.' });

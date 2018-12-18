@@ -9,7 +9,7 @@ var auth = {
     /*
      * Admin Sign Up
      */
-    signup: function(req, res) {
+    createlogin: function(req, res) {
 
         var adminUser = new adminUserModel({
             userName: 'admin',
@@ -26,7 +26,7 @@ var auth = {
 
         });
 
-        adminUser.password = messageclass.convertHash(adminUser.password);
+        adminUser.password = messageclass.SHAEncryption(adminUser.password);
 
         //  console.log(adminUser);
         adminUser.save(function(err, ss) {
@@ -67,7 +67,8 @@ var auth = {
                         admin: user,
                         role: "admin"
                     }
-                    var token = jwt.sign(payload, require('../config/secret')(), {
+
+                    var token = jwt.sign(messageclass.encrypt(payload), require('../config/secret')(), {
                         expiresIn: 86400 // expires in 24 hours
                     });
 

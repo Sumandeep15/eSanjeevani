@@ -7,7 +7,7 @@ var extend = require('mongoose-validator').extend
 var validationclass = require('../../classes/validationClass');
 
 
-var adminUserSchema = new Schema({
+var organizationMembersSchema = new Schema({
     name: {
         first: {
             type: String,
@@ -22,10 +22,15 @@ var adminUserSchema = new Schema({
             reuired: [true, "Last Name is required."]
         }
     },
+    type: {
+        type: Schema.Types.ObjectId,
+        ref: 'MemberType',
+        required: [true, 'State is required']
+    },
     mobile: {
         type: Number,
         unique: true
-            // required: [true, 'Mobile Number Required.']
+
     },
     email: {
         type: String,
@@ -76,15 +81,5 @@ var adminUserSchema = new Schema({
 }, { emitIndexErrors: true });
 
 
-// AdminUserSchema.methods.comparePassword = function(password) {
-
-//     return bcrypt.compareSync(password, this.password);
-// };
-
-// schema.post('pre', prehandleE11000);
-// schema.post('save', handleE11000);
-// schema.post('update', handleE11000);
-// schema.post('findOneAndUpdate', handleE11000);
-// schema.post('insertMany', handleE11000);
-var AdminUser = db.model('AdminUser', adminUserSchema, 'AdminUser');
-module.exports = AdminUser;
+var OrganizationMembersSchema = db.model('OrganizationMembersSchema', organizationMembersSchema, 'OrganizationMembersSchema');
+module.exports = OrganizationMembersSchema;
